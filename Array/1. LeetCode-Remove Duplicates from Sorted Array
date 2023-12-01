@@ -1,1 +1,23 @@
+//https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+         if (nums.empty()) {
+            return 0;
+        }
+
+        int index = 0; // Index to keep track of the current position for non-duplicate elements
+
+        for (int i = 1; i < nums.size(); ++i) {
+            if (nums[i] != nums[index]) {
+                // If the current element is not a duplicate, move it to the next non-duplicate position
+                ++index;
+                nums[index] = nums[i];
+            }
+        }
+
+        // The length of the array without duplicates is (index + 1)
+        return index + 1;
+    }
+};
